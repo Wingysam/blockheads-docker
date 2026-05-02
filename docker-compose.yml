@@ -1,0 +1,12 @@
+services:
+  blockheads:
+    image: ghcr.io/wingysam/blockheads-docker
+    container_name: blockheads
+    stdin_open: true
+    tty: true
+    restart: always
+    volumes:
+      - ./saves:/saves
+    ports:
+      - "15151:15151/udp"
+    command: ["--new", "MY WORLD", "--world_id", "a405c821dc4f9a0ef3162d9f37ce7666", "--no-exit"]

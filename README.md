@@ -3,8 +3,12 @@
 The server for The Blockheads in a Docker container. Unofficial, unsupported by Dave or Majic Jungle.
 
 ```sh
-docker run --restart=always -v "$PWD/saves:/saves" -p 15151:15151/udp ghcr.io/wingysam/blockheads-docker --new "MY WORLD" --no-exit
+docker run -dit --restart=always -v "$PWD/saves:/saves" -p 15151:15151/udp ghcr.io/wingysam/blockheads-docker --new "MY WORLD" --world_id a405c821dc4f9a0ef3162d9f37ce7666 --no-exit
 ```
+
+Alternatively, use the provided `docker-compose.yml`.
+
+Optionally replace `"MY WORLD"` with the desired name of your world and generate a valid world ID using the command `openssl rand -hex 16`.
 
 If you see an error like "No such file or directory", you may need to fix your permissions. Try this:
 
@@ -43,3 +47,5 @@ Available options:
 ### Undocumented Command-line Arguments
 
 * `--no-exit` prevents the server from shutting down when the last player leaves. This means that chat doesn't clear every time the last player leaves.
+
+* `--owner PLAYER_NAME` sets the owner of the server.
